@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#212121">
+  <meta name="description" content="SAHU AI — Your personal AI assistant.">
+  <title>MR SAHU AI</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="side-head">
+      <a class="brand" href="#" aria-label="MR SAHU AI home"><span class="brand-icon">S</span><span>MR SAHU <b>AI</b></span></a>
+      <button class="icon-btn close-sidebar" id="closeSidebar" aria-label="Close menu">×</button>
+    </div>
+    <button class="new-chat" id="newChat"><span>＋</span> New chat</button>
+    <nav class="side-nav" aria-label="AI tools">
+      <p class="nav-caption">WORKSPACE</p>
+      <button class="nav-item active" id="chatNav"><span>▤</span> Chat</button>
+      <button class="nav-item" id="voiceJump"><span>◉</span> Voice assistant <em>Demo</em></button>
+      <button class="nav-item" id="photoJump"><span>▧</span> Photo studio <em>Preview</em></button>
+      <button class="nav-item" id="pdfJump"><span>▧</span> PDF assistant <em>Soon</em></button>
+      <button class="nav-item" id="studyJump"><span>✧</span> Study assistant <em>Soon</em></button>
+    </nav>
+    <div class="history-area">
+      <p class="nav-caption">RECENT</p>
+      <div id="historyList" class="history-list"><p class="empty-history">Your recent chats will appear here.</p></div>
+    </div>
+    <div class="sidebar-footer">
+      <div class="creator-avatar">S</div>
+      <div><strong>Smruti Ranjan Sahu</strong><small>Creator of SAHU AI</small></div>
+    </div>
+  </aside>
+
+  <main class="main-panel">
+    <header class="topbar">
+      <div class="top-left">
+        <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+        <span class="mobile-brand">MR SAHU AI</span>
+        <div class="model-select">SAHU AI <span class="model-tag">BETA</span><span class="chevron">⌄</span></div>
+      </div>
+      <button class="share-btn" id="aboutBtn">About</button>
+    </header>
+
+    <section class="welcome" id="welcome">
+      <div class="welcome-mark">S</div>
+      <p class="welcome-kicker">YOUR PERSONAL AI ASSISTANT</p>
+      <h1>What can I help<br><span>you with today?</span></h1>
+      <p class="welcome-sub">Ask anything. Explore ideas. Learn something new.</p>
+      <div class="suggestion-grid">
+        <button class="suggestion" data-prompt="Explain artificial intelligence in simple Odia."><span class="suggestion-icon">✧</span><span><b>Learn something</b><small>Explore a new topic</small></span></button>
+        <button class="suggestion" data-prompt="Help me solve a maths problem step by step."><span class="suggestion-icon">⌗</span><span><b>Solve a problem</b><small>Work through an answer</small></span></button>
+        <button class="suggestion" data-prompt="Give me creative ideas for a school project."><span class="suggestion-icon">◇</span><span><b>Get creative</b><small>Find fresh ideas</small></span></button>
+        <button class="suggestion" id="suggestVoice"><span class="suggestion-icon">◉</span><span><b>Talk to SAHU AI</b><small>Try voice assistant</small></span></button>
+      </div>
+    </section>
+
+    <section class="chat-view" id="chatArea" hidden><div class="messages" id="messages"></div></section>
+
+    <section class="tool-view voice-view" id="voicePanel" hidden>
+      <div class="tool-symbol" id="voiceOrb">◉</div><p class="tool-kicker">SAHU AI VOICE</p>
+      <h2>Talk it out.</h2><p class="tool-description" id="voiceStatus">Tap the microphone and start speaking.</p>
+      <div class="transcript" id="voiceTranscript">Your voice transcript will appear here.</div>
+      <button class="mic-button" id="micBtn" aria-label="Start voice">🎙</button>
+      <small>Voice recognition depends on your browser and device. This is a browser demo.</small>
+    </section>
+
+    <section class="tool-view" id="photoPanel" hidden>
+      <div class="tool-card"><div class="tool-symbol">▧</div><p class="tool-kicker">CREATIVE TOOLS</p><h2>Photo studio</h2>
+        <p class="tool-description">Choose a photo to preview it. AI photo editing is not connected yet.</p>
+        <label class="upload-btn">＋ Choose photo<input type="file" id="photoInput" accept="image/*" hidden></label>
+        <img id="photoPreview" alt="Selected photo preview" hidden><p class="photo-note" id="photoNote">No image selected.</p>
+      </div>
+    </section>
+
+    <section class="tool-view" id="comingPanel" hidden>
+      <div class="tool-card"><div class="tool-symbol" id="comingIcon">✧</div><p class="tool-kicker">COMING NEXT</p><h2 id="comingTitle">PDF assistant</h2><p class="tool-description" id="comingDescription">This feature will be added in a future version.</p><button class="back-chat" id="backToChat">Back to chat</button></div>
+    </section>
+
+    <div class="composer-dock" id="composerWrap">
+      <form class="composer" id="chatForm">
+        <button type="button" class="attach-btn" id="attachBtn" aria-label="Attach file" title="Attach a file">＋</button>
+        <input type="file" id="chatFile" hidden accept="image/*,.pdf,.txt,.doc,.docx">
+        <textarea id="prompt" rows="1" placeholder="Message MR SAHU AI..." aria-label="Message MR SAHU AI"></textarea>
+        <button type="button" class="voice-input-btn" id="composerMic" aria-label="Voice input" title="Voice input">🎙</button>
+        <button type="submit" class="send-btn" aria-label="Send message">↑</button>
+      </form>
+      <div class="composer-note"><span id="attachmentName"></span><span>SAHU AI can make mistakes. Check important information.</span></div>
+    </div>
+  </main>
+</div>
+
+<dialog id="aboutDialog"><div class="dialog-inner"><button class="dialog-close" id="closeAbout" aria-label="Close">×</button><div class="welcome-mark small-mark">S</div><h2>MR SAHU AI</h2><p>Your Smart AI Assistant</p><div class="dialog-line"></div><strong>Created by Smruti Ranjan Sahu</strong><small>AI chat works when the secure server is configured. Voice uses browser speech tools; photo editing, PDF processing, accounts and cloud chat history are not connected yet.</small></div></dialog>
+<script src="app.js"></script>
+</body></html>
